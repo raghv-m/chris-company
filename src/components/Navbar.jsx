@@ -39,13 +39,13 @@ const Navbar = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 shadow-md backdrop-blur-sm' : 'bg-transparent'
+        isScrolled ? 'bg-emerald-800/95 shadow-md' : 'bg-emerald-900/95'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2"> {/* Reduced padding */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
@@ -61,14 +61,14 @@ const Navbar = () => {
             <div>
               <h1
                 className={`text-lg font-bold ${
-                  isScrolled ? 'text-navy-700' : 'text-white'
+                  isScrolled ? 'text-white' : 'text-white'
                 } transition-colors duration-300`}
               >
                 Alberta ProClean
               </h1>
               <p
                 className={`text-xs ${
-                  isScrolled ? 'text-emerald-500' : 'text-emerald-200'
+                  isScrolled ? 'text-emerald-300' : 'text-emerald-200'
                 } transition-colors duration-300`}
               >
                 Commercial Cleaning
@@ -85,7 +85,7 @@ const Navbar = () => {
                 onClick={(e) => handleScroll(e, link.href)}
                 className={`text-sm font-medium transition-all duration-300 ${
                   isScrolled
-                    ? 'text-gray-700 hover:text-emerald-500'
+                    ? 'text-white hover:text-emerald-300'
                     : 'text-white hover:text-emerald-200'
                 }`}
                 whileHover={{ y: -1 }}
@@ -97,7 +97,7 @@ const Navbar = () => {
             <motion.a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="btn-primary text-sm flex items-center space-x-2 px-4 py-2"
+              className="btn-primary text-sm flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white hover:bg-emerald-600"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -110,7 +110,7 @@ const Navbar = () => {
           <motion.button
             className={`lg:hidden p-2 rounded-md transition-colors duration-300 ${
               isScrolled
-                ? 'text-gray-700 hover:bg-gray-100'
+                ? 'text-white hover:bg-emerald-700/50'
                 : 'text-white hover:bg-white/10'
             }`}
             onClick={() => setIsOpen(!isOpen)}
@@ -124,21 +124,21 @@ const Navbar = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="lg:hidden bg-white/95 shadow-md"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
+              className="lg:hidden bg-emerald-900/95 shadow-md fixed inset-0 flex items-center justify-center"
+              initial={{ opacity: 0, y: '-100%' }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: '-100%' }}
               transition={{ duration: 0.3 }}
             >
-              <div className="px-4 py-4 space-y-2">
+              <div className="w-full max-w-xs px-4 py-4 space-y-4 text-center">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="block text-gray-700 hover:text-emerald-500 font-medium py-2 text-sm"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    className="block text-white hover:text-emerald-300 font-medium py-2 text-base"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
                     {link.label}
@@ -147,12 +147,12 @@ const Navbar = () => {
                 <motion.a
                   href="#contact"
                   onClick={(e) => handleScroll(e, '#contact')}
-                  className="btn-primary inline-flex items-center space-x-2 mt-2 px-4 py-2 text-sm"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  className="btn-primary inline-flex items-center justify-center space-x-2 mt-4 px-6 py-2 bg-emerald-500 text-white hover:bg-emerald-600 text-base w-full"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: navLinks.length * 0.1 }}
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-5 h-5" />
                   <span>Get Quote</span>
                 </motion.a>
               </div>

@@ -1,17 +1,17 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 
 // Import components
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import WhyChooseUs from './components/WhyChooseUs'
-import Testimonials from './components/Testimonials'
-import Gallery from './components/Gallery'
-import ContactForm from './components/ContactForm'
-import Footer from './components/Footer'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import WhyChooseUs from './components/WhyChooseUs';
+import Testimonials from './components/Testimonials';
+import Gallery from './components/Gallery';
+import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
 
 function App() {
   // Schema.org structured data for local business
@@ -137,11 +137,11 @@ function App() {
         </script>
       </Helmet>
 
-      <div className="min-h-screen bg-white">
+      <div className="bg-white">
         <Navbar />
         
         <main>
-          <section id="home">
+          <section id="home" className="pt-16"> {/* Added padding to clear navbar */}
             <Hero />
           </section>
           
@@ -165,10 +165,6 @@ function App() {
             <Gallery />
           </section>
           
-          {/* <section id="map">
-            <MapSection />
-          </section> */}
-          
           <section id="contact">
             <ContactForm />
           </section>
@@ -177,7 +173,7 @@ function App() {
         <Footer />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
