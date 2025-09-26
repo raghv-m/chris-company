@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Star, Shield, Award, Phone } from 'lucide-react';
 import bannerImage from '../assets/banner.jpg'; // Adjust path if necessary
 
 const Hero = () => {
+  const [imageFailed, setImageFailed] = useState(false); // State to track if image fails
+
   // Smooth scroll function
   const handleScroll = (href) => {
     const element = document.querySelector(href);
@@ -18,31 +20,49 @@ const Hero = () => {
     { icon: Star, text: 'Serving Alberta Since 2010' },
   ];
 
+  // Debug: Log the image path
+  console.log('Banner Image Path:', bannerImage);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${bannerImage})`, // Use the imported image
+          backgroundImage: `url(${bannerImage})`, // Use imported image as background
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-green-900/60"></div> {/* Fallback colors */}
+        {/* Overlay ("black film" - semi-transparent gradient) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-green-900/70"></div>
       </div>
 
-      {/* Placeholder for banner image (if image fails to load) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
-        <div className="absolute inset-0 bg-black/20"></div>
-        {/* Decorative pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-32 h-32 border-2 border-white rounded-full"></div>
-          <div className="absolute bottom-32 right-32 w-24 h-24 border-2 border-green-400 rounded-full"></div>
-          <div className="absolute top-1/3 right-1/4 w-16 h-16 border border-white/50 rounded-full"></div>
+      {/* Fallback Placeholder (shows only if image fails) */}
+      {imageFailed && (
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-green-900">
+          <div className="absolute inset-0 bg-black/20"></div>
+          {/* Decorative pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-20 w-32 h-32 border-2 border-white rounded-full"></div>
+            <div className="absolute bottom-32 right-32 w-24 h-24 border-2 border-green-400 rounded-full"></div>
+            <div className="absolute top-1/3 right-1/4 w-16 h-16 border border-white/50 rounded-full"></div>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Hidden img to detect load failure (without displaying it) */}
+      <img
+        src={bannerImage}
+        alt="Banner preload"
+        className="hidden"
+        onError={() => {
+          console.error('Failed to load banner image');
+          setImageFailed(true);
+        }}
+        onLoad={() => setImageFailed(false)}
+      />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="text-center max-w-5xl mx-auto">
           {/* Main Headline */}
           <motion.h1
@@ -142,15 +162,15 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+        className="absolute bottom-8 transform -translate-x-1/2 text-white z-20"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <div className="flex flex-col items-center space-y-2">
-          <span className="text-sm font-medium">Scroll to explore</span>
+        <div className="flex flex-col  ">
+          <span className="text-sm font-medium  left-1/2 x"></span>
           <div className="w-1 h-8 bg-white/50 rounded-full relative">
             <motion.div
-              className="w-1 h-2 bg-green-400 rounded-full absolute top-0"
+              className="w-1 h-2  left-1/2  bg-green-400 rounded-full absolute top-0"
               animate={{ y: [0, 24, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
             ></motion.div>

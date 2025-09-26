@@ -11,6 +11,7 @@ import WhyChooseUs from './components/WhyChooseUs'
 import Testimonials from './components/Testimonials'
 import Gallery from './components/Gallery'
 import ContactForm from './components/ContactForm'
+import Footer from './components/Footer'
 
 function App() {
   // Schema.org structured data for local business
@@ -172,8 +173,8 @@ function App() {
             <ContactForm />
           </section>
         </main>
-{/*         
-        <Footer /> */}
+        
+        <Footer />
       </div>
     </>
   )
