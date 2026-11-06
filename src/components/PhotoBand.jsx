@@ -91,6 +91,11 @@ function PhotoBand() {
         </div>
       </div>
 
+      {/* Subtle dark scrims so the arrows and dots stay visible on light photos */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/30 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/30 to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
+
       <button
         type="button"
         onClick={() => goTo(index - 1)}
