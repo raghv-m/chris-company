@@ -28,26 +28,46 @@ function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-7 text-sm font-medium">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-green-900">{link.label}</a>
+            <a key={link.href} href={link.href} className="nav-link transition-colors hover:text-green-900">{link.label}</a>
           ))}
           <a href="#quote" className="btn-primary py-2 px-4 text-sm">Get a quote</a>
         </div>
         <button
-          className="md:hidden border border-stone-300 rounded-md px-3 py-2 text-sm font-medium"
+          type="button"
+          className="md:hidden border border-stone-300 rounded-md px-3 py-2.5 transition-colors hover:bg-stone-50"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
         >
-          Menu
+          <span className="flex flex-col items-center gap-[5px]" aria-hidden="true">
+            <span className={`block h-0.5 w-5 bg-green-950 transition-transform duration-300 ${open ? 'translate-y-[7px] rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-5 bg-green-950 transition-opacity duration-300 ${open ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-5 bg-green-950 transition-transform duration-300 ${open ? '-translate-y-[7px] -rotate-45' : ''}`} />
+          </span>
         </button>
       </nav>
-      {open && (
-        <div className="md:hidden border-t border-stone-200 px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+      <div id="mobile-menu" className={`mobile-menu md:hidden ${open ? 'open' : ''}`} aria-hidden={!open}>
+        <div className="border-t border-stone-200 px-4 py-3 flex flex-col text-sm font-medium">
           {links.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</a>
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="rounded-md px-2 py-2.5 transition-colors hover:bg-stone-50 hover:text-green-900"
+            >
+              {link.label}
+            </a>
           ))}
-          <a href="#quote" onClick={() => setOpen(false)} className="text-green-900 font-semibold">Get a quote</a>
+          <a
+            href="#quote"
+            onClick={() => setOpen(false)}
+            className="rounded-md px-2 py-2.5 text-green-900 font-semibold transition-colors hover:bg-stone-50"
+          >
+            Get a quote
+          </a>
         </div>
-      )}
+      </div>
     </header>
   )
 }

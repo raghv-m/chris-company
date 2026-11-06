@@ -38,7 +38,7 @@ function Services() {
         </p>
         <div className="snap-carousel mt-10 md:grid gap-px bg-stone-200 border border-stone-200 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <article key={service.title} className="bg-white p-6 reveal" style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
+            <article key={service.title} className="bg-white p-6 reveal card-hover" style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{service.title}</h3>
               <p className="mt-2 text-sm text-stone-600 leading-relaxed">{service.text}</p>
             </article>

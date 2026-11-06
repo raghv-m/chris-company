@@ -83,7 +83,7 @@ function App() {
         <div className="border-t border-white/10">
           <div className="container-max px-4 sm:px-6 lg:px-8 py-5 text-xs text-stone-400 flex flex-col sm:flex-row justify-between gap-2">
             <span>© 2026 Alberta ProClean Services</span>
-            <a href="#quote" className="underline underline-offset-4">Request a quote</a>
+            <a href="#quote" className="underline underline-offset-4 transition-colors hover:text-white">Request a quote</a>
           </div>
         </div>
       </footer>

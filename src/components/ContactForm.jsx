@@ -50,7 +50,7 @@ function ContactForm() {
 
         <div className="lg:col-span-3 reveal" style={{ transitionDelay: '100ms' }}>
           {sent ? (
-            <div className="border border-green-800 bg-white p-8">
+            <div className="border border-green-800 bg-white p-8 shadow-sm">
               <h3 className="text-xl font-bold text-green-950">Thanks, your request is in.</h3>
               <p className="mt-3 text-stone-600 leading-relaxed">
                 We reply within one business day to book a walk-through at a time that suits you,
@@ -59,7 +59,7 @@ function ContactForm() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="border border-stone-200 bg-white p-6 sm:p-8 grid gap-5 sm:grid-cols-2">
+            <form onSubmit={handleSubmit} className="border border-stone-200 bg-white p-6 sm:p-8 grid gap-5 sm:grid-cols-2 shadow-sm">
               <div>
                 <label htmlFor="name" className={labelClass}>Your name</label>
                 <input id="name" name="name" required className={inputClass} placeholder="First and last name" />

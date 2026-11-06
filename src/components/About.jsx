@@ -23,7 +23,7 @@ function About() {
           </p>
         </div>
         <div className="lg:col-span-2 reveal" style={{ transitionDelay: '100ms' }}>
-          <figure className="border border-stone-200 bg-white p-2 mb-6">
+          <figure className="border border-stone-200 bg-white p-2 mb-6 shadow-sm">
             <img
               src="https://picsum.photos/seed/proclean-crew/1200/800"
               alt="Placeholder photo of a cleaner at work in a commercial space"
@@ -33,7 +33,7 @@ function About() {
               className="w-full aspect-[4/3] object-cover"
             />
           </figure>
-          <div className="border border-stone-200 p-6">
+          <div className="border border-stone-200 p-6 transition-shadow duration-300 hover:shadow-md">
             <h3 className="font-bold text-green-950">Who we clean for</h3>
             <ul className="mt-3 space-y-2 text-sm text-stone-600">
               <li>Retail stores, large floor plates and small storefronts</li>
@@ -43,7 +43,7 @@ function About() {
               <li>Renovated spaces that need a post-construction clean</li>
             </ul>
           </div>
-          <div className="border border-stone-200 border-t-0 p-6">
+          <div className="border border-stone-200 border-t-0 p-6 transition-shadow duration-300 hover:shadow-md">
             <h3 className="font-bold text-green-950">Office hours</h3>
             <p className="mt-3 text-sm text-stone-600">
               Monday to Friday, 8 am to 6 pm. Cleaning crews work evenings and overnight, 7 nights a week.

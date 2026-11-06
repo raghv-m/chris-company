@@ -19,12 +19,12 @@ function ServiceArea() {
         </p>
         <div className="snap-carousel-sm mt-10 sm:grid gap-px bg-stone-200 border border-stone-200 sm:grid-cols-2 lg:grid-cols-3">
           {areas.map((area, index) => (
-            <div key={area.city} className="bg-white p-6 reveal" style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
+            <div key={area.city} className="bg-white p-6 reveal card-hover" style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{area.city}</h3>
               <p className="mt-2 text-sm text-stone-600 leading-relaxed">{area.note}</p>
             </div>
           ))}
-          <div className="bg-green-950 p-6 text-white reveal" style={{ transitionDelay: '160ms' }}>
+          <div className="bg-green-950 p-6 text-white reveal card-hover" style={{ transitionDelay: '160ms' }}>
             <h3 className="font-bold">Outside this list?</h3>
             <p className="mt-2 text-sm leading-relaxed text-stone-200">
               Ask anyway. If a site is too far for us to service properly, we will tell you straight
