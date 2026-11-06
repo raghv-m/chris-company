@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
@@ -18,6 +12,11 @@
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Keep anchored sections clear of the sticky header */
+  section[id] {
+    scroll-margin-top: 7rem;
   }
 }
 
@@ -37,16 +36,7 @@
   .container-max {
     @apply max-w-6xl mx-auto;
   }
-}
 
-@layer base {
-  /* Keep anchored sections clear of the sticky header */
-  section[id] {
-    scroll-margin-top: 7rem;
-  }
-}
-
-@layer components {
   /* Scroll reveal. The hidden starting state only applies under
      .reveal-on, a class the useReveal hook adds to <html> when it
      runs, so content is never hidden when JS fails. */
@@ -140,6 +130,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .reveal {
     transition: none;
   }

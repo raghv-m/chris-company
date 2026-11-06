@@ -23,6 +23,16 @@ function About() {
           </p>
         </div>
         <div className="lg:col-span-2 reveal" style={{ transitionDelay: '100ms' }}>
+          <figure className="border border-stone-200 bg-white p-2 mb-6">
+            <img
+              src="https://picsum.photos/seed/proclean-crew/1200/800"
+              alt="Placeholder photo of a cleaner at work in a commercial space"
+              width="1200"
+              height="800"
+              loading="lazy"
+              className="w-full aspect-[4/3] object-cover"
+            />
+          </figure>
           <div className="border border-stone-200 p-6">
             <h3 className="font-bold text-green-950">Who we clean for</h3>
             <ul className="mt-3 space-y-2 text-sm text-stone-600">

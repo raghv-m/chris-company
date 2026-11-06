@@ -24,6 +24,16 @@ function Hero() {
           <li className="border-l-4 border-green-800 pl-3">Same crew on a set schedule</li>
           <li className="border-l-4 border-green-800 pl-3">We bring our own equipment and supplies</li>
         </ul>
+        <figure className="mt-12 border border-stone-200 bg-white p-2">
+          <img
+            src="https://picsum.photos/seed/proclean-storefront/1200/800"
+            alt="Placeholder photo of a clean, bright retail store interior"
+            width="1200"
+            height="800"
+            loading="lazy"
+            className="w-full aspect-[4/3] sm:aspect-[16/9] object-cover"
+          />
+        </figure>
       </div>
     </section>
   )

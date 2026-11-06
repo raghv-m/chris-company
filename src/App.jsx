@@ -6,6 +6,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import HowItWorks from './components/WhyChooseUs'
+import PhotoBand from './components/PhotoBand'
 import ServiceArea from './components/Gallery'
 import Faq from './components/Testimonials'
 import ContactForm from './components/ContactForm'
@@ -50,6 +51,7 @@ function App() {
         <Hero />
         <Services />
         <HowItWorks />
+        <PhotoBand />
         <About />
         <ServiceArea />
         <Faq />
