@@ -26,7 +26,6 @@ function App() {
       "addressRegion": "AB",
       "addressCountry": "CA"
     },
-    "telephone": "780-555-0123",
     "email": "quotes@albertaproclean.ca",
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
@@ -46,8 +45,14 @@ function App() {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3 focus:font-semibold focus:text-green-950"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
         <Services />
         <HowItWorks />
@@ -59,7 +64,7 @@ function App() {
       </main>
 
       <footer className="bg-green-950 text-stone-200">
-        <div className="container-max section-padding grid gap-10 md:grid-cols-3 reveal">
+        <div className="container-max section-padding grid gap-10 sm:grid-cols-2 md:grid-cols-3 reveal">
           <div>
             <p className="text-white font-bold text-lg">Alberta ProClean Services</p>
             <p className="mt-3 text-sm leading-relaxed">
@@ -75,15 +80,19 @@ function App() {
           </div>
           <div>
             <p className="text-white font-semibold">Contact</p>
-            <p className="mt-3 text-sm">Call or text: 780-555-0123</p>
-            <p className="mt-1 text-sm">Email: quotes@albertaproclean.ca</p>
+            <p className="mt-3 text-sm">
+              Email:{' '}
+              <a href="mailto:quotes@albertaproclean.ca" className="inline-flex min-h-[44px] items-center underline underline-offset-4 transition-colors hover:text-white">
+                quotes@albertaproclean.ca
+              </a>
+            </p>
             <p className="mt-1 text-sm">Edmonton, Alberta</p>
           </div>
         </div>
         <div className="border-t border-white/10">
           <div className="container-max px-4 sm:px-6 lg:px-8 py-5 text-xs text-stone-400 flex flex-col sm:flex-row justify-between gap-2">
             <span>© 2026 Alberta ProClean Services</span>
-            <a href="#quote" className="underline underline-offset-4 transition-colors hover:text-white">Request a quote</a>
+            <a href="#quote" className="inline-flex min-h-[48px] items-center underline underline-offset-4 transition-colors hover:text-white">Request a quote</a>
           </div>
         </div>
       </footer>

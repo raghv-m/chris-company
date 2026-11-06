@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'What if something gets missed?',
-    a: 'Call or text the number on your quote. Missed items are re-cleaned on the next visit, or the same day if it is something your customers will see.',
+    a: 'Email us at quotes@albertaproclean.ca or send the quote form on this page. Missed items are re-cleaned on the next visit, or the same day if it is something your customers will see.',
   },
   {
     q: 'Can you start mid-month?',
@@ -31,7 +31,7 @@ function Faq() {
   return (
     <section id="faq" className="section-padding">
       <div className="container-max">
-        <h2 className="text-3xl font-bold tracking-tight text-green-950 reveal">Questions we get asked</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-green-950 reveal sm:text-3xl">Questions we get asked</h2>
         <div className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
           {faqs.map((item, index) => (
             <div key={item.q} className="reveal" style={{ transitionDelay: `${(index % 2) * 80}ms` }}>

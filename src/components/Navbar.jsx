@@ -15,26 +15,27 @@ function Navbar() {
     <header className="sticky top-0 z-40 bg-white border-b border-stone-200">
       <div className="bg-green-950 text-white text-sm">
         <div className="container-max px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap gap-x-6 gap-y-1 justify-between">
-          <span>Commercial cleaning, Edmonton and area</span>
-          <span>
-            Call or text <a href="tel:7805550123" className="font-semibold underline underline-offset-4">780-555-0123</a>
+          <span className="py-2">Commercial cleaning, Edmonton and area</span>
+          <span className="flex flex-wrap items-center gap-x-5">
+            <a href="mailto:quotes@albertaproclean.ca" className="inline-flex min-h-[44px] items-center font-semibold underline underline-offset-4">quotes@albertaproclean.ca</a>
+            <a href="#quote" className="inline-flex min-h-[44px] items-center font-semibold underline underline-offset-4">Request a quote</a>
           </span>
         </div>
       </div>
       <nav className="container-max px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <a href="#top" className="leading-tight">
+        <a href="#top" className="inline-flex min-h-[48px] flex-col justify-center leading-tight">
           <span className="block font-extrabold text-lg text-green-950 tracking-tight">Alberta ProClean</span>
           <span className="block text-xs uppercase tracking-widest text-stone-500">Services</span>
         </a>
         <div className="hidden md:flex items-center gap-7 text-sm font-medium">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link transition-colors hover:text-green-900">{link.label}</a>
+            <a key={link.href} href={link.href} className="nav-link inline-flex min-h-[48px] items-center px-1 transition-colors hover:text-green-900">{link.label}</a>
           ))}
-          <a href="#quote" className="btn-primary py-2 px-4 text-sm">Get a quote</a>
+          <a href="#quote" className="btn-primary px-5 text-sm">Get a quote</a>
         </div>
         <button
           type="button"
-          className="md:hidden border border-stone-300 rounded-md px-3 py-2.5 transition-colors hover:bg-stone-50"
+          className="flex min-h-[48px] min-w-[48px] items-center justify-center border border-stone-300 rounded-md px-3 transition-colors hover:bg-stone-50 md:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -54,7 +55,7 @@ function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-md px-2 py-2.5 transition-colors hover:bg-stone-50 hover:text-green-900"
+              className="flex min-h-[48px] items-center rounded-md px-3 py-2 transition-colors hover:bg-stone-50 hover:text-green-900"
             >
               {link.label}
             </a>
@@ -62,7 +63,7 @@ function Navbar() {
           <a
             href="#quote"
             onClick={() => setOpen(false)}
-            className="rounded-md px-2 py-2.5 text-green-900 font-semibold transition-colors hover:bg-stone-50"
+            className="flex min-h-[48px] items-center rounded-md px-3 py-2 text-green-900 font-semibold transition-colors hover:bg-stone-50"
           >
             Get a quote
           </a>

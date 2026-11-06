@@ -5,11 +5,11 @@ function About() {
     <section id="about" className="section-padding">
       <div className="container-max grid gap-10 lg:grid-cols-5">
         <div className="lg:col-span-3 reveal">
-          <h2 className="text-3xl font-bold tracking-tight text-green-950">An Edmonton cleaning crew, not a call centre</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-green-950 sm:text-3xl">An Edmonton cleaning crew, not a call centre</h2>
           <p className="mt-4 text-stone-600 leading-relaxed">
             Alberta ProClean Services is based in Edmonton and cleans for independent retailers,
             grocery and pharmacy stores, offices and small clinics around the metro area. When you
-            call, you get someone here who knows your building, not a dispatcher in another province.
+            reach out, you get someone here who knows your building, not a dispatcher in another province.
           </p>
           <p className="mt-4 text-stone-600 leading-relaxed">
             The work itself is unglamorous and we treat it that way. Show up on the nights we said,
@@ -25,8 +25,8 @@ function About() {
         <div className="lg:col-span-2 reveal" style={{ transitionDelay: '100ms' }}>
           <figure className="border border-stone-200 bg-white p-2 mb-6 shadow-sm">
             <img
-              src="https://picsum.photos/seed/proclean-crew/1200/800"
-              alt="Placeholder photo of a cleaner at work in a commercial space"
+              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&h=800&q=80"
+              alt="Cleaner wearing gloves, a mask and goggles while wiping interior window glass"
               width="1200"
               height="800"
               loading="lazy"

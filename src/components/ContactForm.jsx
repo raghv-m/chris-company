@@ -8,14 +8,14 @@ function ContactForm() {
     setSent(true)
   }
 
-  const inputClass = 'w-full border border-stone-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-green-800'
+  const inputClass = 'w-full min-h-[48px] border border-stone-300 rounded-md px-3.5 py-3 text-base placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-green-800 focus:border-green-800'
   const labelClass = 'block text-sm font-semibold text-stone-700 mb-1.5'
 
   return (
     <section id="quote" className="bg-stone-50 border-t border-stone-200 section-padding">
       <div className="container-max grid gap-12 lg:grid-cols-5">
         <div className="lg:col-span-2 reveal">
-          <h2 className="text-3xl font-bold tracking-tight text-green-950">Request a quote</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-green-950 sm:text-3xl">Request a quote</h2>
           <p className="mt-4 text-stone-600 leading-relaxed">
             Tell us what kind of space you have and where it is. We reply within one business day to
             book a walk-through, and the quote itself is a flat monthly rate in writing. No obligation
@@ -23,15 +23,16 @@ function ContactForm() {
           </p>
           <dl className="mt-8 space-y-5 text-sm">
             <div>
-              <dt className="font-bold text-green-950">Phone</dt>
+              <dt className="font-bold text-green-950">Email</dt>
               <dd className="mt-1 text-stone-600">
-                <a href="tel:7805550123" className="underline underline-offset-4">780-555-0123</a>, call or text
+                <a href="mailto:quotes@albertaproclean.ca" className="inline-flex min-h-[44px] items-center underline underline-offset-4">quotes@albertaproclean.ca</a>
               </dd>
             </div>
             <div>
-              <dt className="font-bold text-green-950">Email</dt>
-              <dd className="mt-1 text-stone-600">
-                <a href="mailto:quotes@albertaproclean.ca" className="underline underline-offset-4">quotes@albertaproclean.ca</a>
+              <dt className="font-bold text-green-950">Quote form</dt>
+              <dd className="mt-1 leading-relaxed text-stone-600">
+                Send the form on this page with a few details about your space. We reply within
+                one business day to book a walk-through.
               </dd>
             </div>
             <div>
@@ -54,8 +55,8 @@ function ContactForm() {
               <h3 className="text-xl font-bold text-green-950">Thanks, your request is in.</h3>
               <p className="mt-3 text-stone-600 leading-relaxed">
                 We reply within one business day to book a walk-through at a time that suits you,
-                usually early morning before open or right after close. If it is urgent, call or text
-                780-555-0123.
+                usually early morning before open or right after close. If it is urgent, email
+                quotes@albertaproclean.ca and put "Urgent" in the subject line.
               </p>
             </div>
           ) : (

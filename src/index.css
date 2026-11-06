@@ -14,6 +14,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* One consistent, visible keyboard focus style everywhere.
+     Form fields keep their own ring on top of this. */
+  :focus-visible {
+    outline: 2px solid #166534;
+    outline-offset: 2px;
+  }
+
   /* Keep anchored sections clear of the sticky header */
   section[id] {
     scroll-margin-top: 7rem;
@@ -22,11 +29,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-green-900 hover:bg-green-950 text-white font-semibold py-3 px-6 rounded-md shadow-sm hover:shadow-md transition duration-200;
+    @apply inline-flex items-center justify-center min-h-[48px] text-center bg-green-900 hover:bg-green-950 text-white font-semibold py-3 px-6 rounded-md shadow-sm hover:shadow-md transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-800 focus-visible:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-white hover:bg-stone-100 text-green-950 font-semibold py-3 px-6 rounded-md border border-stone-300 shadow-sm hover:shadow-md transition duration-200;
+    @apply inline-flex items-center justify-center min-h-[48px] text-center bg-white hover:bg-stone-100 text-green-950 font-semibold py-3 px-6 rounded-md border border-stone-300 shadow-sm hover:shadow-md transition duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-800 focus-visible:ring-offset-2;
   }
 
   /* Buttons lift a touch on hover; plain CSS so the @apply blocks
@@ -37,7 +44,7 @@
   }
 
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply py-16 lg:py-24 px-4 sm:px-6 lg:px-8;
   }
 
   .container-max {
@@ -53,7 +60,7 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -5px;
+    bottom: 6px;
     height: 2px;
     width: 100%;
     background-color: #14532d;
@@ -79,7 +86,7 @@
   }
 
   .mobile-menu.open {
-    max-height: 24rem;
+    max-height: 30rem;
     opacity: 1;
     visibility: visible;
     transition: max-height 0.4s ease, opacity 0.35s ease, visibility 0s;
@@ -156,46 +163,6 @@
     animation-delay: 0.4s;
   }
 
-  /* Mobile swipe rows: pure CSS scroll-snap with a peek of the next
-     card. The Tailwind grid classes take over at md (services) and
-     sm (service area) breakpoints. */
-  @media (max-width: 767px) {
-    .snap-carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .snap-carousel::-webkit-scrollbar {
-      display: none;
-    }
-
-    .snap-carousel > * {
-      flex: 0 0 85%;
-      scroll-snap-align: start;
-    }
-  }
-
-  @media (max-width: 639px) {
-    .snap-carousel-sm {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .snap-carousel-sm::-webkit-scrollbar {
-      display: none;
-    }
-
-    .snap-carousel-sm > * {
-      flex: 0 0 85%;
-      scroll-snap-align: start;
-    }
-  }
 }
 
 @keyframes hero-fade-up {

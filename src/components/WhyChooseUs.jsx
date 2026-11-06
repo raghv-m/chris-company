@@ -15,7 +15,7 @@ const steps = [
   },
   {
     title: '4. Checked work',
-    text: 'A supervisor walks sites on a rotation and checks against the list. If something gets missed, you call one number and it is re-cleaned on the next visit, or sooner if it cannot wait.',
+    text: 'A supervisor walks sites on a rotation and checks against the list. If something gets missed, let us know and it is re-cleaned on the next visit, or sooner if it cannot wait.',
   },
 ]
 
@@ -23,11 +23,11 @@ function HowItWorks() {
   return (
     <section id="how" className="bg-stone-50 border-y border-stone-200 section-padding">
       <div className="container-max">
-        <h2 className="text-3xl font-bold tracking-tight text-green-950 reveal">How it works</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-green-950 reveal sm:text-3xl">How it works</h2>
         <p className="mt-3 text-stone-600 max-w-2xl leading-relaxed reveal">
-          No app, no ticket system, no call centre. Four steps and a phone number.
+          No app, no ticket system, no call centre. Four steps and a written checklist.
         </p>
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
+        <div className="mt-10 grid gap-8 sm:grid-cols-2">
           {steps.map((step, index) => (
             <div key={step.title} className="border-t-4 border-green-800 pt-4 reveal" style={{ transitionDelay: `${(index % 2) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{step.title}</h3>

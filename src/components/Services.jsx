@@ -31,12 +31,12 @@ function Services() {
   return (
     <section id="services" className="section-padding">
       <div className="container-max">
-        <h2 className="text-3xl font-bold tracking-tight text-green-950 reveal">What we clean</h2>
+        <h2 className="text-2xl font-bold tracking-tight text-green-950 reveal sm:text-3xl">What we clean</h2>
         <p className="mt-3 text-stone-600 max-w-2xl leading-relaxed reveal">
           Six services, quoted as one flat monthly rate for your building. Pick the nights and the
           checklist items you need. Nothing is bundled in that you did not ask for.
         </p>
-        <div className="snap-carousel mt-10 md:grid gap-px bg-stone-200 border border-stone-200 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-px border border-stone-200 bg-stone-200 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <article key={service.title} className="bg-white p-6 reveal card-hover" style={{ transitionDelay: `${(index % 3) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{service.title}</h3>
