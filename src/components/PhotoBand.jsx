@@ -22,12 +22,20 @@ const slides = [
 function PhotoBand() {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
+  // Bumped on every manual navigation (dot, arrow, swipe). The autoplay
+  // effect depends on it, so a tap always restarts the 5-second clock:
+  // the chosen slide gets a full dwell and can never be advanced away
+  // a fraction of a second later by an interval tick that was already
+  // due. Slide, track transform, aria-current and the highlighted dot
+  // all derive from the single `index` state, so they cannot disagree.
+  const [navCycle, setNavCycle] = useState(0)
   const touchStartX = useRef(null)
   const count = slides.length
 
   const goTo = useCallback(
     (i) => {
       setIndex(((i % count) + count) % count)
+      setNavCycle((c) => c + 1)
     },
     [count]
   )
@@ -43,7 +51,7 @@ function PhotoBand() {
       setIndex((current) => (current + 1) % count)
     }, 5000)
     return () => clearInterval(id)
-  }, [paused, count])
+  }, [paused, count, navCycle])
 
   // Touch swipe: a horizontal drag of 40px or more moves one slide.
   const handleTouchStart = (event) => {
@@ -91,11 +99,19 @@ function PhotoBand() {
         </div>
       </div>
 
+      {/* Scrim behind the dot row: on pale photos the white dots wash
+          out, so the bottom edge of the frame gets a soft dark gradient.
+          Decorative only; the buttons paint and click above it. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 via-black/15 to-transparent"
+      />
+
       <button
         type="button"
         onClick={() => goTo(index - 1)}
         aria-label="Previous photo"
-        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-green-950 shadow-md transition duration-200 hover:bg-white hover:shadow-lg"
+        className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-green-950 shadow-lg ring-1 ring-black/15 transition duration-200 hover:bg-white hover:shadow-lg"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M15 18l-6-6 6-6" />
@@ -105,7 +121,7 @@ function PhotoBand() {
         type="button"
         onClick={() => goTo(index + 1)}
         aria-label="Next photo"
-        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-green-950 shadow-md transition duration-200 hover:bg-white hover:shadow-lg"
+        className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-green-950 shadow-lg ring-1 ring-black/15 transition duration-200 hover:bg-white hover:shadow-lg"
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M9 6l6 6-6 6" />

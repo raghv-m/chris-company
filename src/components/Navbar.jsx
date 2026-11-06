@@ -29,7 +29,7 @@ function Navbar() {
         </a>
         <div className="hidden md:flex items-center gap-7 text-sm font-medium">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link inline-flex min-h-[48px] items-center px-1 transition-colors hover:text-green-900">{link.label}</a>
+            <a key={link.href} href={link.href} className="nav-link inline-flex min-h-[48px] items-center px-3 transition-colors hover:text-green-900">{link.label}</a>
           ))}
           <a href="#quote" className="btn-primary px-5 text-sm">Get a quote</a>
         </div>
