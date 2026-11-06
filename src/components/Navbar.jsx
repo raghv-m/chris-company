@@ -1,167 +1,55 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Leaf, Phone } from 'lucide-react';
+import React, { useState } from 'react'
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+const links = [
+  { label: 'Services', href: '#services' },
+  { label: 'How it works', href: '#how' },
+  { label: 'About', href: '#about' },
+  { label: 'Service area', href: '#area' },
+  { label: 'FAQ', href: '#faq' },
+]
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Navigation links
-  const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#why-us', label: 'Why Us' },
-    { href: '#testimonials', label: 'Testimonials' },
-    { href: '#contact', label: 'Contact' },
-  ];
-
-  // Smooth scroll function
-  const handleScroll = (e, href) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsOpen(false);
-  };
+function Navbar() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-emerald-800/95 shadow-md' : 'bg-emerald-900/95'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <motion.div
-            className="flex items-center space-x-2"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Leaf
-              className={`w-6 h-6 ${
-                isScrolled ? 'text-emerald-500' : 'text-white'
-              } transition-colors duration-300`}
-            />
-            <div>
-              <h1
-                className={`text-lg font-bold ${
-                  isScrolled ? 'text-white' : 'text-white'
-                } transition-colors duration-300`}
-              >
-                Alberta ProClean
-              </h1>
-              <p
-                className={`text-xs ${
-                  isScrolled ? 'text-emerald-300' : 'text-emerald-200'
-                } transition-colors duration-300`}
-              >
-                Commercial Cleaning
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
-                className={`text-sm font-medium transition-all duration-300 ${
-                  isScrolled
-                    ? 'text-white hover:text-emerald-300'
-                    : 'text-white hover:text-emerald-200'
-                }`}
-                whileHover={{ y: -1 }}
-                transition={{ duration: 0.2 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.a
-              href="#contact"
-              onClick={(e) => handleScroll(e, '#contact')}
-              className="btn-primary text-sm flex items-center space-x-2 px-4 py-2 bg-emerald-500 text-white hover:bg-emerald-600"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Phone className="w-4 h-4" />
-              <span>Get Quote</span>
-            </motion.a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <motion.button
-            className={`lg:hidden p-2 rounded-md transition-colors duration-300 ${
-              isScrolled
-                ? 'text-white hover:bg-emerald-700/50'
-                : 'text-white hover:bg-white/10'
-            }`}
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </motion.button>
+    <header className="sticky top-0 z-40 bg-white border-b border-stone-200">
+      <div className="bg-green-950 text-white text-sm">
+        <div className="container-max px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap gap-x-6 gap-y-1 justify-between">
+          <span>Commercial cleaning, Edmonton and area</span>
+          <span>
+            Call or text <a href="tel:7805550123" className="font-semibold underline underline-offset-4">780-555-0123</a>
+          </span>
         </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              className="lg:hidden bg-emerald-900/95 shadow-md fixed inset-0 flex items-center justify-center"
-              initial={{ opacity: 0, y: '-100%' }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: '-100%' }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="w-full max-w-xs px-4 py-4 space-y-4 text-center">
-                {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleScroll(e, link.href)}
-                    className="block text-white hover:text-emerald-300 font-medium py-2 text-base"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {link.label}
-                  </motion.a>
-                ))}
-                <motion.a
-                  href="#contact"
-                  onClick={(e) => handleScroll(e, '#contact')}
-                  className="btn-primary inline-flex items-center justify-center space-x-2 mt-4 px-6 py-2 bg-emerald-500 text-white hover:bg-emerald-600 text-base w-full"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.1 }}
-                >
-                  <Phone className="w-5 h-5" />
-                  <span>Get Quote</span>
-                </motion.a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
-    </motion.nav>
-  );
-};
+      <nav className="container-max px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        <a href="#top" className="leading-tight">
+          <span className="block font-extrabold text-lg text-green-950 tracking-tight">Alberta ProClean</span>
+          <span className="block text-xs uppercase tracking-widest text-stone-500">Services</span>
+        </a>
+        <div className="hidden md:flex items-center gap-7 text-sm font-medium">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-green-900">{link.label}</a>
+          ))}
+          <a href="#quote" className="btn-primary py-2 px-4 text-sm">Get a quote</a>
+        </div>
+        <button
+          className="md:hidden border border-stone-300 rounded-md px-3 py-2 text-sm font-medium"
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+        >
+          Menu
+        </button>
+      </nav>
+      {open && (
+        <div className="md:hidden border-t border-stone-200 px-4 py-3 flex flex-col gap-3 text-sm font-medium">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setOpen(false)}>{link.label}</a>
+          ))}
+          <a href="#quote" onClick={() => setOpen(false)} className="text-green-900 font-semibold">Get a quote</a>
+        </div>
+      )}
+    </header>
+  )
+}
 
-export default Navbar;
+export default Navbar

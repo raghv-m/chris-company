@@ -1,179 +1,89 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
+import React from 'react'
+import { Helmet } from 'react-helmet-async'
 
-// Import components
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import WhyChooseUs from './components/WhyChooseUs';
-import Testimonials from './components/Testimonials';
-import Gallery from './components/Gallery';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Services from './components/Services'
+import HowItWorks from './components/WhyChooseUs'
+import ServiceArea from './components/Gallery'
+import Faq from './components/Testimonials'
+import ContactForm from './components/ContactForm'
 
 function App() {
-  // Schema.org structured data for local business
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Alberta ProClean Services",
-    "image": "https://albertaproclean.ca/logo.jpg",
-    "description": "Professional commercial cleaning services for retail stores across Alberta, specializing in Shoppers Drug Mart, Real Canadian Superstore, and No Frills locations.",
+    "description": "Commercial cleaning for retail stores, offices and clinics in Edmonton and area. Nightly cleaning, floor care, washroom sanitization, window cleaning and post-construction cleanup.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Edmonton",
       "addressLocality": "Edmonton",
       "addressRegion": "AB",
-      "postalCode": "T5J 0A1",
       "addressCountry": "CA"
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 53.5444,
-      "longitude": -113.4909
-    },
     "telephone": "780-555-0123",
-    "email": "info@albertaproclean.ca",
-    "url": "https://albertaproclean.ca",
+    "email": "quotes@albertaproclean.ca",
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "08:00",
       "closes": "18:00"
     }],
-    "serviceArea": {
-      "@type": "State",
-      "name": "Alberta"
-    },
     "priceRange": "$$",
-    "areaServed": ["Edmonton", "Calgary", "Alberta"],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Commercial Cleaning Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Retail Store Cleaning",
-            "description": "Professional cleaning services for retail chains like Shoppers Drug Mart and Real Canadian Superstore"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Floor Care Services",
-            "description": "Deep cleaning and polishing for high-traffic retail store floors"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Window and Glass Cleaning",
-            "description": "Streak-free cleaning for retail store windows and glass displays"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Restroom Sanitization",
-            "description": "Professional disinfection and sanitization of retail store restrooms"
-          }
-        }
-      ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127"
-    }
-  };
+    "areaServed": ["Edmonton", "Sherwood Park", "St. Albert", "Spruce Grove", "Leduc"]
+  }
 
   return (
-    <>
+    <div className="min-h-screen bg-white text-stone-800">
       <Helmet>
-        <title>Alberta ProClean Services | Professional Commercial Retail Cleaning in Alberta</title>
-        <meta 
-          name="description" 
-          content="Expert commercial cleaning for retail stores like Shoppers Drug Mart & Real Canadian Superstore. Eco-friendly, reliable services across Alberta. Book now!" 
-        />
-        <meta 
-          name="keywords" 
-          content="commercial cleaning Alberta, retail store cleaning, Shoppers Drug Mart cleaning, No Frills janitorial services, Real Canadian Superstore cleaning, Edmonton cleaning services" 
-        />
-        
-        {/* Open Graph Tags */}
-        <meta property="og:title" content="Alberta ProClean Services | Professional Commercial Retail Cleaning" />
-        <meta property="og:description" content="Expert commercial cleaning for retail stores like Shoppers Drug Mart & Real Canadian Superstore. Eco-friendly, reliable services across Alberta." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://albertaproclean.ca" />
-        <meta property="og:image" content="https://albertaproclean.ca/og-image.jpg" />
-        <meta property="og:site_name" content="Alberta ProClean Services" />
-        <meta property="og:locale" content="en_CA" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Alberta ProClean Services | Professional Commercial Retail Cleaning" />
-        <meta name="twitter:description" content="Expert commercial cleaning for retail stores like Shoppers Drug Mart & Real Canadian Superstore. Eco-friendly, reliable services across Alberta." />
-        <meta name="twitter:image" content="https://albertaproclean.ca/og-image.jpg" />
-        
-        {/* Additional Meta Tags */}
-        <meta name="author" content="Alberta ProClean Services" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://albertaproclean.ca" />
-        <meta name="geo.region" content="CA-AB" />
-        <meta name="geo.placename" content="Edmonton, Alberta" />
-        <meta name="geo.position" content="53.5444;-113.4909" />
-        <meta name="ICBM" content="53.5444, -113.4909" />
-        
-        {/* Schema.org JSON-LD */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
+        <title>Alberta ProClean Services | Commercial Cleaning in Edmonton and Area</title>
+        <meta name="description" content="Commercial cleaning for retail stores, offices and clinics in Edmonton, Sherwood Park, St. Albert, Spruce Grove and Leduc. Nightly crews and a written checklist for every site." />
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       </Helmet>
 
-      <div className="bg-white">
-        <Navbar />
-        
-        <main>
-          <section id="home" className="pt-16"> {/* Added padding to clear navbar */}
-            <Hero />
-          </section>
-          
-          <section id="about">
-            <About />
-          </section>
-          
-          <section id="services">
-            <Services />
-          </section>
-          
-          <section id="why-us">
-            <WhyChooseUs />
-          </section>
-          
-          <section id="testimonials">
-            <Testimonials />
-          </section>
-          
-          <section id="gallery">
-            <Gallery />
-          </section>
-          
-          <section id="contact">
-            <ContactForm />
-          </section>
-        </main>
-        
-        <Footer />
-      </div>
-    </>
-  );
-};
+      <Navbar />
+      <main>
+        <Hero />
+        <Services />
+        <HowItWorks />
+        <About />
+        <ServiceArea />
+        <Faq />
+        <ContactForm />
+      </main>
 
-export default App;
+      <footer className="bg-green-950 text-stone-200">
+        <div className="container-max section-padding grid gap-10 md:grid-cols-3">
+          <div>
+            <p className="text-white font-bold text-lg">Alberta ProClean Services</p>
+            <p className="mt-3 text-sm leading-relaxed">
+              Commercial cleaning for retail stores, offices and clinics. Crews work evenings and overnight, 7 nights a week.
+            </p>
+          </div>
+          <div>
+            <p className="text-white font-semibold">Service area</p>
+            <p className="mt-3 text-sm leading-relaxed">
+              Edmonton, Sherwood Park, St. Albert, Spruce Grove and Leduc.
+            </p>
+            <p className="mt-3 text-sm">Office hours: Monday to Friday, 8 am to 6 pm.</p>
+          </div>
+          <div>
+            <p className="text-white font-semibold">Contact</p>
+            <p className="mt-3 text-sm">Call or text: 780-555-0123</p>
+            <p className="mt-1 text-sm">Email: quotes@albertaproclean.ca</p>
+            <p className="mt-1 text-sm">Edmonton, Alberta</p>
+          </div>
+        </div>
+        <div className="border-t border-white/10">
+          <div className="container-max px-4 sm:px-6 lg:px-8 py-5 text-xs text-stone-400 flex flex-col sm:flex-row justify-between gap-2">
+            <span>© 2026 Alberta ProClean Services</span>
+            <a href="#quote" className="underline underline-offset-4">Request a quote</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
+
+export default App
