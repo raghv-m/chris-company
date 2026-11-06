@@ -3,7 +3,7 @@ import React from 'react'
 function Hero() {
   return (
     <section id="top" className="bg-stone-50 border-b border-stone-200">
-      <div className="container-max section-padding">
+      <div className="container-max section-padding hero-in">
         <p className="text-sm font-semibold uppercase tracking-widest text-green-900">
           Nightly cleaning for stores, offices and clinics
         </p>

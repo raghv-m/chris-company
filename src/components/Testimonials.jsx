@@ -31,10 +31,10 @@ function Faq() {
   return (
     <section id="faq" className="section-padding">
       <div className="container-max">
-        <h2 className="text-3xl font-bold tracking-tight text-green-950">Questions we get asked</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-green-950 reveal">Questions we get asked</h2>
         <div className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
-          {faqs.map((item) => (
-            <div key={item.q}>
+          {faqs.map((item, index) => (
+            <div key={item.q} className="reveal" style={{ transitionDelay: `${(index % 2) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{item.q}</h3>
               <p className="mt-2 text-sm text-stone-600 leading-relaxed">{item.a}</p>
             </div>

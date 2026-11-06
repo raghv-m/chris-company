@@ -4,7 +4,7 @@ function About() {
   return (
     <section id="about" className="section-padding">
       <div className="container-max grid gap-10 lg:grid-cols-5">
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 reveal">
           <h2 className="text-3xl font-bold tracking-tight text-green-950">An Edmonton cleaning crew, not a call centre</h2>
           <p className="mt-4 text-stone-600 leading-relaxed">
             Alberta ProClean Services is based in Edmonton and cleans for independent retailers,
@@ -22,7 +22,7 @@ function About() {
             what our schedules are built around.
           </p>
         </div>
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 reveal" style={{ transitionDelay: '100ms' }}>
           <div className="border border-stone-200 p-6">
             <h3 className="font-bold text-green-950">Who we clean for</h3>
             <ul className="mt-3 space-y-2 text-sm text-stone-600">

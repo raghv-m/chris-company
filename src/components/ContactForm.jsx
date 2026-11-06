@@ -14,7 +14,7 @@ function ContactForm() {
   return (
     <section id="quote" className="bg-stone-50 border-t border-stone-200 section-padding">
       <div className="container-max grid gap-12 lg:grid-cols-5">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 reveal">
           <h2 className="text-3xl font-bold tracking-tight text-green-950">Request a quote</h2>
           <p className="mt-4 text-stone-600 leading-relaxed">
             Tell us what kind of space you have and where it is. We reply within one business day to
@@ -48,7 +48,7 @@ function ContactForm() {
           </dl>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 reveal" style={{ transitionDelay: '100ms' }}>
           {sent ? (
             <div className="border border-green-800 bg-white p-8">
               <h3 className="text-xl font-bold text-green-950">Thanks, your request is in.</h3>

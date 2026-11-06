@@ -38,3 +38,118 @@
     @apply max-w-6xl mx-auto;
   }
 }
+
+@layer base {
+  /* Keep anchored sections clear of the sticky header */
+  section[id] {
+    scroll-margin-top: 7rem;
+  }
+}
+
+@layer components {
+  /* Scroll reveal. The hidden starting state only applies under
+     .reveal-on, a class the useReveal hook adds to <html> when it
+     runs, so content is never hidden when JS fails. */
+  .reveal {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal-on .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  .reveal-on .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero entrance on page load, CSS only */
+  .hero-in > * {
+    animation: hero-fade-up 0.7s ease both;
+  }
+
+  .hero-in > *:nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .hero-in > *:nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .hero-in > *:nth-child(4) {
+    animation-delay: 0.24s;
+  }
+
+  .hero-in > *:nth-child(5) {
+    animation-delay: 0.32s;
+  }
+
+  /* Mobile swipe rows: pure CSS scroll-snap with a peek of the next
+     card. The Tailwind grid classes take over at md (services) and
+     sm (service area) breakpoints. */
+  @media (max-width: 767px) {
+    .snap-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .snap-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .snap-carousel > * {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .snap-carousel-sm {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .snap-carousel-sm::-webkit-scrollbar {
+      display: none;
+    }
+
+    .snap-carousel-sm > * {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+    }
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+
+  .reveal-on .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-in > * {
+    animation: none;
+  }
+}

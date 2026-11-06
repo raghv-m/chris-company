@@ -23,19 +23,19 @@ function HowItWorks() {
   return (
     <section id="how" className="bg-stone-50 border-y border-stone-200 section-padding">
       <div className="container-max">
-        <h2 className="text-3xl font-bold tracking-tight text-green-950">How it works</h2>
-        <p className="mt-3 text-stone-600 max-w-2xl leading-relaxed">
+        <h2 className="text-3xl font-bold tracking-tight text-green-950 reveal">How it works</h2>
+        <p className="mt-3 text-stone-600 max-w-2xl leading-relaxed reveal">
           No app, no ticket system, no call centre. Four steps and a phone number.
         </p>
         <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {steps.map((step) => (
-            <div key={step.title} className="border-t-4 border-green-800 pt-4">
+          {steps.map((step, index) => (
+            <div key={step.title} className="border-t-4 border-green-800 pt-4 reveal" style={{ transitionDelay: `${(index % 2) * 80}ms` }}>
               <h3 className="font-bold text-green-950">{step.title}</h3>
               <p className="mt-2 text-sm text-stone-600 leading-relaxed">{step.text}</p>
             </div>
           ))}
         </div>
-        <p className="mt-10 text-sm font-medium text-stone-700">
+        <p className="mt-10 text-sm font-medium text-stone-700 reveal">
           We bring our own equipment and supplies. Key and alarm procedures are agreed in writing before the first clean. Staff are trained on WHMIS basics and site safety rules.
         </p>
       </div>

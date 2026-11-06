@@ -9,8 +9,11 @@ import HowItWorks from './components/WhyChooseUs'
 import ServiceArea from './components/Gallery'
 import Faq from './components/Testimonials'
 import ContactForm from './components/ContactForm'
+import useReveal from './hooks/useReveal'
 
 function App() {
+  useReveal()
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -54,7 +57,7 @@ function App() {
       </main>
 
       <footer className="bg-green-950 text-stone-200">
-        <div className="container-max section-padding grid gap-10 md:grid-cols-3">
+        <div className="container-max section-padding grid gap-10 md:grid-cols-3 reveal">
           <div>
             <p className="text-white font-bold text-lg">Alberta ProClean Services</p>
             <p className="mt-3 text-sm leading-relaxed">
